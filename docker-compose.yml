@@ -4,17 +4,19 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./app:/var/www/app
+      - ./app:/app
       - ./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf
     links:
       - php-fpm
+
   php-fpm:
     build:
       dockerfile: ./etc/docker/php-fpm.Dockerfile
     volumes:
-      - ./app:/var/www/app
+      - ./app:/app
     links:
       - composer
+
   composer:
     image: composer
     volumes:
