@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+use Rector\Config\RectorConfig;
+
+require __DIR__ . '/vendor/autoload.php';
+
+return RectorConfig::configure()
+    ->withPaths([
+        __DIR__ . '/config',
+        __DIR__ . '/public',
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
+    ])
+    ->withPhpSets()
+    ->withTypeCoverageLevel(0)
+    ->withDeadCodeLevel(0)
+    ->withCodeQualityLevel(0);

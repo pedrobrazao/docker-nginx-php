@@ -1,0 +1,8 @@
+app/var/
+app/vendor/
+app/config/container.php
+app/.env
+app/phpstan.neon
+app/phpunit.xml
+app/.php-cs-fixer.cache
+app/.phpunit.cache
