@@ -16,9 +16,10 @@ final class HomeHandlerTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
         $logger->expects($this->once())->method('info');
 
-        $handler = new HomeHandler($logger);
-
         $rEQUEST = $this->getMockBuilder(ServerRequestInterface::class)->getMock();
+        $rEQUEST->expects($this->once())->method('getUri');
+
+        $handler = new HomeHandler($logger);
 
         $response = $handler->handle($rEQUEST);
 

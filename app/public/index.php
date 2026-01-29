@@ -1,11 +1,5 @@
     <?php
 
-define('APP_NAME', 'APP_NAME');
-define('APP_ENV', 'APP_ENV');
-define('APP_ENV_PROD', 'prod');
-define('APP_ENV_DEV', 'dev');
-define('APP_ENV_TEST', 'test');
-
 use App\Factory\ApplicationFactory;
 use App\Factory\ContainerFactory;
 use Dotenv\Dotenv;
