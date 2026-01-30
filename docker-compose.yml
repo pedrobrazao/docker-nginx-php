@@ -25,6 +25,8 @@ services:
       dockerfile: ./etc/docker/php-cli.Dockerfile
     volumes:
       - ./app:/app
+    environment:
+      - XDEBUG_MODE=coverage
     links:
       - composer
 
