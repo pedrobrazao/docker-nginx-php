@@ -1,30 +1,33 @@
 services:
   web:
-    image: nginx:latest
     container_name: web
+    build:
+      dockerfile: ./docker/nginx/Dockerfile
     ports:
       - '8080:80'
+      - '8443:443'
     volumes:
-      - ./app:/app
-      - ./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/app
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/default-ssl.conf:/etc/nginx/conf.d/default-ssl.conf
     links:
       - php-fpm
 
   php-fpm:
     container_name: php-fpm
     build:
-      dockerfile: ./etc/docker/php-fpm.Dockerfile
+      dockerfile: ./docker/php-fpm/Dockerfile
     volumes:
-      - ./app:/app
+      - .:/app
     links:
       - composer
 
   php-cli:
     container_name: php-cli
     build:
-      dockerfile: ./etc/docker/php-cli.Dockerfile
+      dockerfile: ./docker/php-cli/Dockerfile
     volumes:
-      - ./app:/app
+      - .:/app
     environment:
       - XDEBUG_MODE=coverage
     links:
@@ -34,7 +37,7 @@ services:
     container_name: composer
     image: composer
     volumes:
-      - ./app:/app
+      - .:/app
     entrypoint:
       - composer
       - install
