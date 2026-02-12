@@ -14,18 +14,28 @@ Simply pull this repository using Git Clone.
 
 To bring containers up:
 
-`docker-compose up -d`
+`docker compose up -d` to pull images and run containers in background or just `docker compose up` to run them in foreground.
 
 To stop running containers:
 
-`docker-compose down`
+`docker compose down`
 ## Project structure
 
-The file `docker-compose.yml` in the root directory contains the definition for all services running from Docker containers.
+The file `compose.yml` in the root directory contains the definition for all services running from Docker containers.
+
+Any service details can be adjusted and other services can be added creating a file named `compose.override.yaml` which is not tracked by Git.
 
 ## How to run the application?
 
 Like any Web app just open a browser and navigate to `http://localhost:8080/` or `https://localhost:8443` and in this case accept the self-signed certificate as valid.
+
+## SSL certificate
+
+In order to run the web application under HTTPS a self-signed certificate is automatically generated and hosted in `var/ssl` directory.
+
+To generate a fresh new certificate just run the `ssl` container once again:
+
+`docker compose run `ssl`
 
 ## How to run tests in development mode?
 

@@ -6,3 +6,4 @@ phpstan.neon
 phpunit.xml
 .php-cs-fixer.cache
 .phpunit.cache
+compose.override.yaml 
