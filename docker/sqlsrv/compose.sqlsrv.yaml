@@ -1,0 +1,13 @@
+services:
+
+  sqlsrv:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlsrv
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "P@ssw0rd"
+    ports:
+      - "1433:1433"
+    volumes:
+    - .:/app
+      - ./var/sqlserver:/var/opt/mssql
